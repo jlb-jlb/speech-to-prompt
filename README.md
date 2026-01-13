@@ -24,7 +24,7 @@ A web-based application that converts messy speech recordings into clean, optimi
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/jlb-jlb/speech-to-prompt.git
 cd speech-to-prompt
 
 # Build and run with Docker Compose
