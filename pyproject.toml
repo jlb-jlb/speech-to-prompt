@@ -6,8 +6,9 @@ readme = "README.md"
 authors = [
     { name = "jlb-jlb", email = "joscha.bisping@gmail.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
+    "ctranslate2>=4.6.3",
     "faster-whisper>=1.2.1",
     "gradio>=6.3.0",
     "ollama>=0.6.1",
