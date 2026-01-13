@@ -132,7 +132,7 @@ uv run gradio src/speech_to_prompt/main.py
 ### Docker Development
 ```bash
 # Build and run with file watching
-docker compose up --build
+docker compose watch
 
 # View logs
 docker compose logs -f app
