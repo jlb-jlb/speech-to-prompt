@@ -7,23 +7,18 @@ import ollama
 # --- Configuration ---
 # Choose model size: "tiny", "base", "small", "medium", "large-v3"
 STT_MODEL_SIZE = "base"
-# Use "cuda" if your Docker container has GPU access, otherwise "cpu"
-device = (
-    "cuda"
-    if os.environ.get("CUDA_VISIBLE_DEVICES")
-    or os.environ.get("NVIDIA_VISIBLE_DEVICES")
-    else "cpu"
-)
+
+device = "cuda"
 
 print(f"Initializing Service on device: {device}")
 print(f"Loading Whisper {STT_MODEL_SIZE} model...")
 
 # Initialize Whisper once (faster than reloading)
 try:
-    model = WhisperModel(STT_MODEL_SIZE, device=device, compute_type="int8")
+    model = WhisperModel(STT_MODEL_SIZE, device=device, compute_type="float32")
 except Exception as e:
     print(f"Warning: Failed to load on {device}, falling back to CPU. Error: {e}")
-    model = WhisperModel(STT_MODEL_SIZE, device="cpu", compute_type="int8")
+    model = WhisperModel(STT_MODEL_SIZE, device="cpu", compute_type="float32")
 
 
 def speech_to_prompt(audio_path, llm_choice, api_key):
