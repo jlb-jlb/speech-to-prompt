@@ -30,10 +30,10 @@ def main():
             share=False
         )
     except KeyboardInterrupt:
-        print("\n👋 Shutting down gracefully...")
+        print("\nShutting down gracefully...")
         sys.exit(0)
     except Exception as e:
-        print(f"❌ Error starting application: {e}")
+        print(f"Error starting application: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
