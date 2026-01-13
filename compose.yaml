@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    image: speech-to-prompt
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - CUDA_VISIBLE_DEVICES=all
+      # Allow Gradio to run in reload mode
+      - GRADIO_SERVER_NAME=0.0.0.0
+    ports:
+      - "7860:7860"
+    # IMPORTANT: Enable GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # NATIVE WATCH CONFIGURATION [web:75]
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: ./pyproject.toml
+    # Override default CMD to enable hot-reloading
+    command: ["uv", "run", "gradio", "src/speech_to_prompt/main.py"]

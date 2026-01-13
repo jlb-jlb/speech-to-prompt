@@ -1,0 +1,22 @@
+[project]
+name = "speech-to-prompt"
+version = "0.1.0"
+description = "A web-based application that converts speech to optimized prompts for LLM chatbots"
+readme = "README.md"
+authors = [
+    { name = "jlb-jlb", email = "joscha.bisping@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "faster-whisper>=1.2.1",
+    "gradio>=6.3.0",
+    "ollama>=0.6.1",
+    "openai>=2.15.0",
+]
+
+[project.scripts]
+speech-to-prompt = "speech_to_prompt:main"
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
